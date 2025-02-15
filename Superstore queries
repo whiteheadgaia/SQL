@@ -1,0 +1,9 @@
+Within the table "superstore", show all item prices in ascending order.
+SELECT *
+FROM superstore
+ORDER BY price;
+
+Show the average price for items in the category "Kitchen Supplies" from the "superstore" table.
+SELECT AVG(price)
+FROM superstore
+WHERE category = "Kitchen Supplies";
