@@ -1,0 +1,7 @@
+1~ Show the total amount spent on salaries within any department having spent over 300,000.
+SELECT department, SUM(salary) as total_spent
+FROM employees
+GROUP BY department
+HAVING total_spent >=300000;
+
+2~ 
