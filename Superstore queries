@@ -1,9 +1,26 @@
-Within the table "superstore", show all item prices in ascending order.
+1~ Within the table "superstore", show all item prices in ascending order.
 SELECT *
 FROM superstore
 ORDER BY price;
 
-Show the average price for items in the category "Kitchen Supplies" from the "superstore" table.
+2~ Show the average price for items in the category "Kitchen Supplies" from the "superstore" table.
 SELECT AVG(price)
 FROM superstore
 WHERE category = "Kitchen Supplies";
+
+3~ Show all items from "superstore" where the item price is greater than or equal to 50. Sort prices low to high.
+SELECT item_name, price
+FROM superstore
+WHERE price >= 50
+ORDER BY price;
+
+4~ Display the names of all items in the "Electronics" category, along with the price and average rating of each item.
+SELECT item_name, price, average_rating
+FROM superstore
+WHERE category = 'Electronics';
+
+5~ Using the query above, sort the results by highest rating to lowest.
+SELECT item_name, price, average_rating
+FROM superstore
+WHERE category = 'Electronics'
+ORDER BY average_rating DESC;
