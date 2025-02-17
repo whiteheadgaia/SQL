@@ -4,4 +4,8 @@ FROM employees
 GROUP BY department
 HAVING total_spent >=300000;
 
-2~ 
+2~ Select all departments from the employees table having average pay of greater than or equal to 70,000 and rename salary as avg_pay.
+SELECT department, salary as avg_pay
+FROM employees
+GROUP BY department
+HAVING salary >=70000;
