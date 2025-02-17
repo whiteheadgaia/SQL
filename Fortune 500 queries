@@ -1,0 +1,35 @@
+1~ Show any companies with over 50,000 employees in the retail industry.
+SELECT company_name, employees, industry
+FROM fortune_companies
+WHERE employees>=50000
+AND industry= 'Retail';
+
+2~ Display the sum total of all employees by industry and show each company name.
+SELECT industry, SUM(employees), company_name
+FROM fortune_companies
+GROUP BY industry;
+
+3~ Show all companies and rate the amount of time off by 'Good' for greater than 15 days, 'Avg' for less than 15 but more than 10 days or 'Minimal' for less than 10.
+SELECT company_name,
+CASE 
+WHEN paid_time_off_days<=10 THEN 'Minimal time off'
+WHEN paid_time_off_days>=15 THEN 'Good time off'
+ELSE 'Avg time off'
+END as 'Amount of time off'
+FROM fortune_companies;
+
+4~ Show the amount of maternity leave in weeks, and if the company offers healthcare benefits or not.
+SELECT company_name, maternity_leave_weeks, 
+CASE
+WHEN healthcare_benefits=1 THEN 'yes'
+ELSE 'no'
+END as healthcare_benefits
+FROM fortune_companies
+WHERE maternity_leave_weeks >=4
+ORDER BY company_name;
+
+5~ Show the average number of employees per technology company in the fortune_companies table.
+SELECT company_name, ROUND(AVG(employees)) AS avg_employees
+FROM fortune_companies
+GROUP BY company_name
+HAVING industry = 'Technology';
