@@ -1,0 +1,14 @@
+1~ Select the different names of prescriptions that Dr. Garcia has prescribed from tables Medication and Prescriptions
+SELECT distinct
+med.medication_name, scripts.doctor_name
+FROM medication med
+INNER JOIN prescriptions scripts
+ON med.person_ID=scripts.person_ID
+WHERE scripts.doctor_name = 'Dr. Garcia';
+
+2~ An old prescription, Zonkify, is now off market. When were the last of the prescriptions filled? Use tables medication and prescriptions.
+SELECT date_filled
+FROM medication med
+INNER JOIN prescriptions scripts
+ON med.person_id=scripts.person_id
+WHERE medication_name = 'Zonkify';
