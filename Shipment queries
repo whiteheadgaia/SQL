@@ -1,0 +1,17 @@
+1~ Select all the customer IDs, customer names, and customer emails, as well as the shipping methods each customer used. Use tables customers and shipments for this query.
+Your results should be in order by customer ID.
+SELECT distinct
+customers.customer_ID, customers.customer_name, customers.contact_email ,shipments.shipping_method
+FROM customers
+LEFT JOIN shipments
+ON customers.customer_ID = shipments.sender_ID
+ORDER BY customers.customer_ID asc;
+
+2~ Select all the customer IDs, customer names, customer emails, and shipping methods from the database, but only for the customers we have detailed shipping history for.
+Your results should be in order by customer ID.
+SELECT distinct
+customers.customer_ID, customers.customer_name, customers.contact_email ,shipments.shipping_method
+FROM customers
+INNER JOIN shipments
+ON customers.customer_ID = shipments.sender_ID
+ORDER BY customers.customer_ID asc;
