@@ -1,0 +1,28 @@
+1~ Find the names of all the economics courses that are currently being taught.
+SELECT CourseName
+FROM courses 
+WHERE Subject='Economics'
+AND Current='Yes';
+
+2~ Find the titles of the textbooks currently used in the economics courses. Your results should include the course name and the textbook name.
+Rename Title to TextbookTitle.
+SELECT Courses.CourseName, Textbooks.title as TextbookTitle
+FROM courses 
+INNER JOIN Textbooks
+ON Courses.CourseID=Textbooks.CourseID
+WHERE Subject='Economics'
+AND Current='Yes';
+
+3~ Find the names of the authors who wrote the textbooks. Your answer should include the name of the course, the name of the textbook, and the name of the author.
+Order by the Name collumn.
+SELECT CourseName, Title, Name
+FROM Courses
+INNER JOIN Textbooks
+ON Courses.CourseID = Textbooks.CourseID
+LEFT JOIN AuthorTextbookLink
+ON Textbooks.TextbookID = AuthorTextbookLink.TextbookID
+LEFT JOIN Author
+ON AuthorTextbookLink.AuthorID = Author.AuthorID
+WHERE Subject = 'Economics'
+AND Current = 'Yes'
+ORDER BY Name;
