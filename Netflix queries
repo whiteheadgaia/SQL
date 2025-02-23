@@ -1,0 +1,30 @@
+1~ Count how many movies exist in the netflix database titled netflix_titles_info.
+SELECT count(*)
+FROM "netflix_titles_info"
+WHERE type='Movie';
+
+2~ Find out when the most recent batch of content was uploaded onto Netflix.
+select max(date(date_added))
+FROM "netflix_titles_info";
+
+3~ List all movies in alphabetical order.
+SELECT title
+FROM "netflix_titles_info"
+ORDER BY title asc;
+
+4~ Find the director's name for the movie titled 'The Starling'.
+SELECT
+director
+FROM "netflix_titles_info" titles
+LEFT JOIN "netflix_people" people
+ON titles.show_id=people.show_id
+WHERE titles.title='The Starling';
+
+5~ Return the oldest movie(s) in the database with the title and year released.
+SELECT title, release_year
+FROM "netflix_titles_info"
+WHERE type = 'Movie'
+AND release_year <=
+(SELECT MIN(release_year)
+FROM "netflix_titles_info"
+WHERE type = 'Movie');
